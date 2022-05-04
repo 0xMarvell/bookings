@@ -1,0 +1,13 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Home Page</h1> 
+                <p>Testing Testing... meep</p>
+                <p>This is {{index .StringMap "data"}} first Go web app</p>
+            </div>
+        </div>
+    </div>
+{{end}}
