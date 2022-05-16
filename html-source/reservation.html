@@ -97,6 +97,9 @@
             <button type="submit" class="btn btn-primary">Search Availability</button> 
           </form>
 
+            <button type="submit" class="btn btn-primary" id="colorButton">Click Me</button>
+
+
     </div>
 
     <!--Footer-->
@@ -121,17 +124,95 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
     <!--Notie JS-->
     <script src="https://unpkg.com/notie"></script>
+    <!--Sweet Alert Modals-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
+      let attention = Prompt()
         const elem = document.getElementById('reservation-dates');
         const rangepicker = new DateRangePicker(elem, {
           // ...options
         });
+
+        document.getElementById('colorButton').addEventListener('click',function () {
+          attention.error({msg:"Trying my best not to give up"})
+        })
 
         function notify(msg,msgType) {
           notie.alert({
             type: msgType,
             text: msg
           });
+
+          // Swal.fire({
+          //   title: 'Error!',
+          //   text: 'Do you want to continue',
+          //   icon: 'error',
+          //   confirmButtonText: 'Cool'
+          // })
+        }
+
+        function Prompt() {
+          let toast = function (c) {
+            const{
+              msg = "",
+              icon = "success",
+              position = "top-end"
+            } = c;
+
+            const Toast = Swal.mixin({
+              toast: true,
+              title: msg,
+              position: position,
+              icon: icon,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({})
+          }
+
+          let success = function (c) {
+            const{
+              msg = "",
+              title = "",
+              footer = ""
+            } = c;
+
+            Swal.fire({
+              icon: 'success',
+              title: title,
+              text: msg,
+              footer: footer
+            })
+          }
+
+          let error = function (c) {
+            const{
+              msg = "",
+              title = "",
+              footer = ""
+            } = c;
+
+            Swal.fire({
+              icon: 'error',
+              title: title,
+              text: msg,
+              footer: footer
+            })
+          }
+
+          return{
+            toast:toast,
+            success:success,
+            error: error
+          }
         }
     </script>
 </body>
