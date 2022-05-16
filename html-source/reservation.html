@@ -32,6 +32,9 @@
       .btn-primary{
         background-color: #163b65;
       }
+      .datepicker{
+        z-index: 10000;
+      }
     </style>
 </head>
 
@@ -102,6 +105,7 @@
 
     </div>
 
+
     <!--Footer-->
     <footer>
       <div class="row my-footer">
@@ -128,31 +132,75 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-      let attention = Prompt()
+        let attention = Prompt()
         const elem = document.getElementById('reservation-dates');
         const rangepicker = new DateRangePicker(elem, {
-          // ...options
+          format: "yyyy-mm-dd"
         });
 
-        document.getElementById('colorButton').addEventListener('click',function () {
-          attention.error({msg:"Trying my best not to give up"})
+        document.getElementById('colorButton').addEventListener('click', function () {
+          let html = `
+      <form action="" method="post" id="check-availability-form" novalidate class="needs-validation">
+        <div class="row">
+          <div class="col">
+            <div class="row" id="reservation-dates-modal">
+              <div class="col">
+                <input disabled required type="text" name="start" class="form-control" id="start" placeholder="Arrival">
+              </div>
+              <div class="col">
+                <input disabled required type="text" name="end" class="form-control" id="end" placeholder="Departure">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      `
+          attention.custom({msg:html, title:"Choose your dates"})
         })
 
-        function notify(msg,msgType) {
+        function notify(msg, msgType) {
           notie.alert({
             type: msgType,
             text: msg
           });
-
-          // Swal.fire({
-          //   title: 'Error!',
-          //   text: 'Do you want to continue',
-          //   icon: 'error',
-          //   confirmButtonText: 'Cool'
-          // })
         }
-
+        // Prompt is the JS module that handles all alerts, popups and notifications
         function Prompt() {
+          async function custom(c) {
+            const{
+              msg = "",
+              title = ""
+            } = c;
+
+            const { value: formValues } = await Swal.fire({
+              title: title,
+              html: msg,
+              backdrop: false,
+              showCancelButton: true,
+              focusConfirm: false,
+              willOpen: () => {
+                const elem = document.getElementById('reservation-dates-modal');
+                const rp = new DateRangePicker(elem, {
+                  format: "yyyy-mm-dd"
+                });
+              },
+              preConfirm: () => {
+                return [
+                  document.getElementById('start').value,
+                  document.getElementById('end').value
+                ]
+              },
+              didOpen: () => {
+                document.getElementById('start').removeAttribute('disabled');
+                document.getElementById('end').removeAttribute('disabled');
+              }
+            })
+
+            if (formValues) {
+              Swal.fire(JSON.stringify(formValues))
+            }
+          }
+
           let toast = function (c) {
             const{
               msg = "",
@@ -211,7 +259,8 @@
           return{
             toast:toast,
             success:success,
-            error: error
+            error: error,
+            custom: custom
           }
         }
     </script>
