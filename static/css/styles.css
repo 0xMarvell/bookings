@@ -1,0 +1,36 @@
+.my-footer {
+    height: 5em;
+    background-color: #163b65;
+    margin-top: 1.5em;
+    padding: 1em;
+    color: white;
+    font-size: 80%;
+}
+
+.room-image {
+    max-width: 50%;
+}
+
+.notie-conttainer {
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #163b65;
+}
+
+/* .datepicker {
+    z-index: 10000;
+}*/
+
+.swal2-actions {
+    display: flex;
+    z-index: auto !important;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 1.25em auto 0;
+    padding: 0;
+} 
