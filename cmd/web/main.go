@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Marvellous-Chimaraoke/bookings/pkg/config"
-	"github.com/Marvellous-Chimaraoke/bookings/pkg/handlers"
-	"github.com/Marvellous-Chimaraoke/bookings/pkg/render"
+	"github.com/Marvellous-Chimaraoke/bookings/internal/config"
+	"github.com/Marvellous-Chimaraoke/bookings/internal/handlers"
+	"github.com/Marvellous-Chimaraoke/bookings/internal/render"
 	"github.com/alexedwards/scs/v2"
 )
 

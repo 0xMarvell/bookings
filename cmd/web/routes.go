@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/Marvellous-Chimaraoke/bookings/pkg/config"
-	"github.com/Marvellous-Chimaraoke/bookings/pkg/handlers"
+	"github.com/Marvellous-Chimaraoke/bookings/internal/config"
+	"github.com/Marvellous-Chimaraoke/bookings/internal/handlers"
 	"github.com/go-chi/chi/v5"
 )
 
