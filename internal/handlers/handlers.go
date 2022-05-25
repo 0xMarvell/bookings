@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/Marvellous-Chimaraoke/bookings/internal/config"
+	"github.com/Marvellous-Chimaraoke/bookings/internal/forms"
 	"github.com/Marvellous-Chimaraoke/bookings/internal/models"
 	"github.com/Marvellous-Chimaraoke/bookings/internal/render"
 )
@@ -98,5 +99,12 @@ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 
 // Reservation renders the "make reservation" page
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{
+		Form: forms.New(nil),
+	})
+}
+
+// PostReservation handles post requests of reservation forms
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+	// render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{})
 }
