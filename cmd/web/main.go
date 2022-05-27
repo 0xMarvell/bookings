@@ -18,6 +18,8 @@ var app config.AppConfig
 var session *scs.SessionManager
 
 func main() {
+	// to allow storage of reservaion details in session
+	//gob.Register(models.Reservation{})
 	// app.InProduction should be false in development and true in production
 	app.InProduction = false
 
