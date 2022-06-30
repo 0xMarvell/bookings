@@ -1,4 +1,4 @@
-module github.com/Marvellous-Chimaraoke/bookings
+module github.com/0xMarvell/bookings
 
 go 1.18
 

@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/Marvellous-Chimaraoke/bookings/internal/config"
-	"github.com/Marvellous-Chimaraoke/bookings/internal/models"
+	"github.com/0xMarvell/bookings/internal/config"
+	"github.com/0xMarvell/bookings/internal/models"
 	"github.com/justinas/nosurf"
 )
 

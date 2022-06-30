@@ -1,6 +1,6 @@
 package models
 
-import "github.com/Marvellous-Chimaraoke/bookings/internal/forms"
+import "github.com/0xMarvell/bookings/internal/forms"
 
 // TemplateData holds data sent from handlers to templates
 type TemplateData struct {

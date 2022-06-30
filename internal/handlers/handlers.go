@@ -6,10 +6,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Marvellous-Chimaraoke/bookings/internal/config"
-	"github.com/Marvellous-Chimaraoke/bookings/internal/forms"
-	"github.com/Marvellous-Chimaraoke/bookings/internal/models"
-	"github.com/Marvellous-Chimaraoke/bookings/internal/render"
+	"github.com/0xMarvell/bookings/internal/config"
+	"github.com/0xMarvell/bookings/internal/forms"
+	"github.com/0xMarvell/bookings/internal/models"
+	"github.com/0xMarvell/bookings/internal/render"
 )
 
 // Repository is the repository type
